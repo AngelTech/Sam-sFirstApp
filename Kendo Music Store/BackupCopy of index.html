@@ -4,209 +4,24 @@
         <title></title>
         <meta charset="utf-8" />
         <script src="cordova.js"></script>
-        <!-- <script src="Plugins/ChildBrowser/childbrowser.js"></script>  -->
+        <script src="Plugins/ChildBrowser/childbrowser.js"></script>
         
-
-        
--        <link href="kendo/styles/kendo.mobile.all.minF.css" rel="stylesheet" />
-        <!-- Replace with kendo/styles/kendo.mobile.all.min.css which is the unformatted one line version of above css file -->
-       
+        <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
         <link href="kendo/styles/kendo.indexedlistview.css" rel="stylesheet" />
         <link href="styles/main.css" rel="stylesheet" />
     </head>
     <body id="body">
 
-        
-<!--SBP ----------------------------------------------------------------------------- SBP -->
-        
-        
-        <!-- mainMenu View -->
+        <!-- Home Views -->
 
-        <div data-role="view" id="mainMenu-view" data-layout="mainMenu-layout" data-title="Main Menu"  style="display: none;">
-            <h1>iScanZone</h1>
-            <p>Automating the Convenience Store Industry</p>
-                        
-            <footer>
-                <div class="footer-images"><img src="Images/iScanZone-Logo.png"/></div><br>
-            </footer>
-            
-            <a data-role="button" class="mainMenuButtons" href="#account-view">LIQUOR</a><br><br>
-            <a data-role="button" class="mainMenuButtons" href="#comingSoon-view">WINE</a><br><br>
-            <a data-role="button" class="mainMenuButtons" href="#comingSoon-view">TOBACCO</a><br><br>
-            <a data-role="button" class="mainMenuButtons" href="#comingSoon-view">OTHER</a><br><br>
-        </div>
-
-        <!-- Layout - mainMenu-Layout  (Empty Footer) --------------- SBP -->
-        
-        <div data-role="layout" data-id="mainMenu-layout" data-show="app.baseLayout.show">
-        </div>
-        
-       
-        
-<!-- SBP ----------------------------------------------------------------------------- SBP -->      
-        
-        
-        <!--  Coming Soon View   SBP -->
-        
-        
-        <div data-role="view" id="comingSoon-view" data-layout="comingSoon-layout" data-title="Coming Soon" data-transition="slide:left" style="display: none;">
-            <div class="Xfooter-images"><img src="Images/iScanZone-Logo.png"/></div>
-            <div style="text-align: center;"><a>iScanZone is working on this new feature.</a></div><br>
-            <div style="text-align: center;"><a>Please check back with us soon</a></div>
-        </div>
-        
-        
-        <!-- Layouts  (IOS & Android) ------------------------  -->
-        
-        <div data-role="layout" data-id="comingSoon-layout" data-show="app.baseLayout.show">
-            <header data-role="header">
-                <div data-role="navbar">
-                    <a class="nav-button" data-align="left" data-role="backbutton">Back</a>
-                    <span data-role="view-title"></span>
-                </div>
-            </header>
-        </div>
-        
-  
-        
-<!-- SBP ----------------------------------------------------------------------------- SBP -->
-        
- 
-        <!-- login-view -->
-        
-        <div data-role="view" id="login-view" data-layout="blank-screen-layout" data-title="Log In" style="display: none;" data-model="app.accountView.viewModel" data-init="app.accountView.loginInit">
-            <p>For demonstration purposes you can register a new username, or use:</p>
-            <ul>
-                <li><strong>Username:</strong> owner</li>
-                <li><strong>Password:</strong> p@ssword123</li>
-            </ul>
-
-            <input type="text" placeholder="Username" data-bind="value: loginUsername" />
-            <input type="password" placeholder="Password" data-bind="value: loginPassword" />
-            <div type="button" data-role="button" data-bind="click: login">Log In</div>
-            <a href="#register-view" data-role="button">Register</a>
-        </div>
-        
-
-              
-        <!-- register-view -->
-        
-        <div data-role="view" id="register-view" data-layout="blank-screen-layout" data-title="Create Account" style="display: none;" data-model="app.accountView.viewModel">
-            <input type="text" placeholder="Username" data-bind="value: registerUsername" />
-            <input type="password" placeholder="Password" data-bind="value: registerPassword" />
-            <input type="password" placeholder="Confirm Password" data-bind="value: registerPasswordRetyped" />
-            <input type="button" data-role="button" value="Register" data-bind="click: register" />
-        </div>
-        
- 
-        <!-- Account Views -->
-
-        <div data-role="view" id="account-view" data-layout="account-layout" data-title="Account" style="display: none;" data-model="app.accountView.viewModel" data-before-show="app.accountView.beforeShow" data-show="app.accountView.accountViewShow">
-            <ul id="order-history-list" class="order-history-list"></ul>
-            
-            <div><br><br><a data-role="button" class="mainMenuButtons" href="#liquor-view">LIQUOR</a></div>
-            
-        </div>
-
-        
-        <!-- Layouts  (IOS & Android) ------------------------  -->
-        
-        <div data-role="layout" data-id="account-layout" data-show="app.accountView.layoutShow">
-            <header data-role="header">
-                <div data-role="navbar">
-                    <span data-role="view-title"></span>
-                    <span data-role="button" data-bind="click: logout" data-align="right">Log Off</span>
-                </div>
-                <h2><span data-bind="text: userName" class="user-name"></span>'s Order History</h2>
-            </header>
-            <div data-role="footer">
-                <!--
-                <div data-role="tabstrip">
-                    <a href="#genres-view" data-icon="home">Store</a>
-                    <a href="#search-view" data-icon="search">Search</a>
-                    <a href="#cart-view" data-icon="cart">Cart<span class="cart-badge km-badge" style="display: none;"></span></a>
-                    <a href="#account-view" data-icon="contacts">Account</a>
-                    <a href="#about-view" data-icon="about">About</a>
-                </div>
-                -->
-            </div>
-
-            <div data-role="popover" id="popover-account-overflow" data-popup='{"height": 55, "width": 125}'>
-                <div data-role="view" data-title="People">
-                    <ul data-role="listview" data-click="app.accountView.action">
-                        <li data-action="logout">Log Off</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div data-role="layout" data-id="account-layout" data-show="app.accountView.layoutShow" data-platform="android">
-            <header data-role="header">
-                <div data-role="navbar">
-                    <a class="nav-button" data-align="left" data-role="backbutton"></a>
-                    <span data-role="view-title"></span>
-                    <div data-align="right" class="action-buttons">
-                        <a data-role="button" href="#popover-account-overflow" data-rel="popover" data-icon="action-overflow"></a>
-                    </div>
-                </div>
-                <h2><span data-bind="text: userName" class="user-name"></span>'s Order History</h2>
-            </header>
-        </div>
-
-           
-        
-<!-- SBP ----------------------------------------------------------------------------- SBP -->
-
-        
-        <!-- Liquor View  -->
-
-        <div data-role="view" id="liquor-view" data-layout="liquor-layout" data-title="Liquor"  data-transition="slide:left" style="display: none; text-align: center;">
-            <h1>Liquor Menu</h1><br>
-            <a data-role="button" class="mainMenuButtons" href="#genres-view">STORE</a><br><br>
-            <a data-role="button" class="mainMenuButtons" href="#comingSoon-view">LABELS</a><br><br>
-            <a data-role="button" class="mainMenuButtons" href="#comingSoon-view">PRICE RULES</a><br><br>
-            <a data-role="button" class="mainMenuButtons" href="#comingSoon-view">SETTINGS</a><br><br>
-        </div>
-
-        <!-- Layouts  (Header Nav Bar & Title) ------------------------ SBP -->
-        
-        <div data-role="layout" data-id="liquor-layout" data-show="app.baseLayout.show">
-            <header data-role="header">
-                <div data-role="navbar">
-                    <a class="nav-button" data-align="left" data-role="backbutton">Back</a>
-                    <span data-role="view-title"></span>
-                </div>
-            </header>
-        </div>
-                
-        
-        
-<!-- SBP ----------------------------------------------------------------------------- SBP -->
-        
-        
-        <!-- Store Views -->
-
-		<div data-role="view" id="genres-view" data-layout="home-layout" data-title="Store Manager" data-model="app.genresView.viewModel" data-show="app.genresView.onShow">
-<!--  New code - Original code error couldn't bind data..              <div data-role="view" id="genres-view" data-layout="home-layout" data-title="Store Manager" >    -->
+        <div data-role="view" id="genres-view" data-layout="home-layout" data-title="Albums" data-model="app.genresView.viewModel" data-show="app.genresView.onShow">
             <ul data-role="listview" data-bind="source: genres" data-template="genre-list-template", data-style="inset"></ul>
-            <div style="text-align: center;"><a>INSERT DATA TABLE HERE</a></div><br>
-            <footer>
-                <div><a href="#scan-view" data-role="button" style="background-color: green">Add Item</a>
-                <a href="#" data-role="button" style="background-color: green">Move Up</a><br></div>
-               <div> <a href="#" data-role="button" style="background-color: green">Delete Item</a>
-                <a href="#" data-role="button" style="background-color: green">Move Down</a></div>
-            </footer>
         </div>
-        
-    <!--
-        <div data-role="view" id="artists-view" data-layout="home-layout" data-title="Store Manager" data-model="app.artistsView.viewModel" class="km-insetcontent" style="display: none;">
+
+        <div data-role="view" id="artists-view" data-layout="home-layout" data-title="Albums" data-model="app.artistsView.viewModel" class="km-insetcontent" style="display: none;">
             <ul data-role="indexedlistview" data-bind="source: artists" data-template="artist-list-template" data-fixed-headers="true"></ul>
         </div>
-    -->
         
-        
-        
-    <!-- SBP will need to remove this albums-view when no longer accessed -->
         <div data-role="view" id="albums-view" data-layout="base-layout" data-model="app.albumsView.viewModel" data-show="app.albumsView.show" data-transition="slide:left" style="display: none;">
             <header data-role="header">
                 <div data-role="navbar">
@@ -214,31 +29,24 @@
                     <span data-role="view-title"></span>
                 </div>
             </header>
+
             <ul id="albums-listview" data-role="listview" data-bind="source: albums" data-auto-bind="false" data-template="album-list-template" data-style="inset" data-endless-scroll="true"></ul>
         </div>
 
-        
-        
-        <!-- Layout - home-layout  (IOS & Android) ------------------------  -->
-        
-        <!--  IOS Layout  -->
         <div data-role="layout" data-id="home-layout" data-init="app.homeLayout.init" data-show="app.homeLayout.show">
             <header data-role="header">
                 <div data-role="navbar">
-                    <a class="nav-button" data-align="left" data-role="backbutton">Back</a>
                     <span data-role="view-title"></span>
                 </div>
-            <!--
                 <ul class="select-group">
-                    <li data-target="#genres-view">Liquor</li>
-                    <li data-target="#artists-view">Brand</li>                   
+                    <li data-target="#genres-view">Genres</li>
+                    <li data-target="#artists-view">Artists</li>
                 </ul>
-            -->
             </header>
 
-            <div data-role="footer"> 
+            <div data-role="footer">
                 <div data-role="tabstrip">
-                    <a href="#genres-view" data-icon="home">Store</a>
+                    <a href="#genres-view" data-icon="home">Home</a>
                     <a href="#search-view" data-icon="search">Search</a>
                     <a href="#cart-view" data-icon="cart">Cart<span class="cart-badge km-badge" style="display: none;"></span></a>
                     <a href="#account-view" data-icon="contacts">Account</a>
@@ -246,8 +54,7 @@
                 </div>
             </div>
         </div>
-        
-        <!--  Android Layout  -->
+
         <div data-role="layout" data-id="home-layout" data-init="app.homeLayout.init" data-show="app.homeLayout.show" data-platform="android">
             <div data-role="header">
                 <div data-role="navbar">
@@ -259,12 +66,10 @@
                         <a data-role="button" href="#popover-action-overflow" data-rel="popover" data-icon="action-overflow"></a>
                     </div>
                 </div>
-            <!--
                 <div data-role="tabstrip">
-                    <a href="#genres-view">Liquor</a>
-                    <a href="#artists-view">Brand</a>
+                    <a href="#genres-view">Genres</a>
+                    <a href="#artists-view">Artists</a>
                 </div>
-            -->
             </div>
 
             <div data-role="popover" id="popover-action-overflow" data-popup='{"height": 110, "width": 125}'>
@@ -278,23 +83,12 @@
         </div>
 
 
-        
-<!-- SBP ----------------------------------------------------------------------------- SBP -->
-        
-
         <!-- Search Views -->
 
         <div data-role="view" id="search-view" data-layout="search-layout" data-title="Search" data-init="app.searchView.init" data-show="app.searchView.show" style="display: none;">
             <ul id="search-listview" data-role="listview" data-bind="source: results" data-template="album-list-template" data-style="inset" data-endless-scroll="true" data-auto-bind="false"></ul>
-        
-            <a href="#scan-view" data-role="button" style="background-color: green">Scan Item</a>
-        </div>  
+        </div>
 
-        
-        
-        <!-- Layout - search-layout  ------------------------ SBP -->        
-        
-        <!--  IOS Layout  -->
         <div data-role="layout" data-id="search-layout" data-show="app.baseLayout.show">
             <header data-role="header">
                 <div data-role="navbar">
@@ -307,7 +101,7 @@
             </header>
             <div data-role="footer">
                 <div data-role="tabstrip">
-                    <a href="#genres-view" data-icon="home">Store</a>
+                    <a href="#genres-view" data-icon="home">Home</a>
                     <a href="#search-view" data-icon="search">Search</a>
                     <a href="#cart-view" data-icon="cart">Cart<span class="cart-badge km-badge" style="display: none;"></span></a>
                     <a href="#account-view" data-icon="contacts">Account</a>
@@ -316,7 +110,6 @@
             </div>
         </div>
 
-        <!--  Android Loayout  -->
         <div data-role="layout" data-id="search-layout" data-platform="android" data-show="app.baseLayout.show">
             <header data-role="header">
                 <div data-role="navbar">
@@ -329,72 +122,6 @@
             </header>
         </div>
 
-        
-       
-<!-- SBP ----------------------------------------------------------------------------- SBP -->
-        
-
-        <!-- Scanner View -->
-
-        <div data-role="view" id="scan-view" data-layout="scan-layout" data-title="Scanner" data-init="app.searchView.init" data-show="app.searchView.show" style="display: none;">
-       
-            <header class="barcodeheader"> 
-    			<h1>Scan a Barcode</h1>
-    		</header>
-            <div class="barcodecontent">
-                <div class="action-area ch40">
-                    <button class="scanbutton dh dw" id="scanButton">Click here to Scan</button>
-    			</div>
-    			<div class="result-area ch60">
-                    <div class="results">
-                        <div id="result" class="desc"></div>
-                    </div>
-                    <div class="separator"></div>
-                </div>
-    		</div>
-<!--
-            <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-            <script type="text/javascript" charset="utf-8" src="scripts/main.js"></script>
--->            
-        </div>  
-
-        
-        <!-- Layout - Scan-Layout   ------------------------ SBP -->
-        
-        <!--  IOS Layout  -->
-        <div data-role="layout" data-id="scan-layout" data-show="app.baseLayout.show">
-            <header data-role="header">
-                <div data-role="navbar">
-                    <span data-role="view-title"></span>
-                </div>
-            </header>
-            <div data-role="footer">
-                <div data-role="tabstrip">
-                    <a href="#genres-view" data-icon="home">Store</a>
-                    <a href="#search-view" data-icon="search">Search</a>
-                    <a href="#cart-view" data-icon="cart">Cart<span class="cart-badge km-badge" style="display: none;"></span></a>
-                    <a href="#account-view" data-icon="contacts">Account</a>
-                    <a href="#about-view" data-icon="about">About</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Android Layout  -->
-        <div data-role="layout" data-id="search-layout" data-platform="android" data-show="app.baseLayout.show">
-            <header data-role="header">
-                <div data-role="navbar">
-                    <a class="nav-button" data-align="left" data-role="backbutton"></a>
-                    <input type="text" class="search-text" placeholder="Album title or artist" />
-                    <div data-align="right" class="action-buttons">
-                        <a data-role="button" data-icon="search" data-click="app.searchView.submitSearch"></a>
-                    </div>
-                </div>
-            </header>
-        </div>
-
-        
-<!-- SBP ----------------------------------------------------------------------------- SBP -->
-        
 
         <!-- Cart Checkout Views -->
 
@@ -467,13 +194,10 @@
             <h1 class="thank-you">Thank You!</h1>
         </div>
 
-        
-        <!-- Layout - cart-layout   ------------------------ SBP -->
-        
         <div data-role="layout" data-id="cart-layout" data-show="app.cartView.layoutShow" data-platform="ios">
             <div data-role="footer">
                 <div data-role="tabstrip">
-                    <a href="#genres-view" data-icon="home">Store</a>
+                    <a href="#genres-view" data-icon="home">Home</a>
                     <a href="#search-view" data-icon="search">Search</a>
                     <a href="#cart-view" data-icon="cart">Cart<span class="cart-badge km-badge" style="display: none;"></span></a>
                     <a href="#account-view" data-icon="contacts">Account</a>
@@ -482,10 +206,6 @@
             </div>
         </div>
 
-        
-        <!-- Layout - checkout-complete-layout   ------------------------ SBP -->
-        
-        <!--  IOS Layout  -->
         <div data-role="layout" data-id="checkout-complete-layout" data-show="app.baseLayout.show">
             <header data-role="header">
                 <div data-role="navbar">
@@ -495,7 +215,7 @@
 
             <div data-role="footer">
                 <div data-role="tabstrip">
-                    <a href="#genres-view" data-icon="home">Store</a>
+                    <a href="#genres-view" data-icon="home">Home</a>
                     <a href="#search-view" data-icon="search">Search</a>
                     <a href="#cart-view" data-icon="cart">Cart<span class="cart-badge km-badge" style="display: none;"></span></a>
                     <a href="#account-view" data-icon="contacts">Account</a>
@@ -504,7 +224,6 @@
             </div>
         </div>
 
-        <!--  Android Layout  -->
         <div data-role="layout" data-id="checkout-complete-layout" data-show="app.baseLayout.show" data-platform="android">
             <header data-role="header">
                 <div data-role="navbar">
@@ -517,10 +236,73 @@
             </header>
         </div>
 
+
+        <!-- Account Views -->
+
+        <div data-role="view" id="account-view" data-layout="account-layout" data-title="Account" style="display: none;" data-model="app.accountView.viewModel" data-before-show="app.accountView.beforeShow" data-show="app.accountView.accountViewShow">
+            <ul id="order-history-list" class="order-history-list"></ul>
+        </div>
+
+        <div data-role="view" id="login-view" data-layout="base-layout" data-title="Log In" style="display: none;" data-model="app.accountView.viewModel" data-init="app.accountView.loginInit">
+            <p>For demonstration purposes you can register a new username, or use:</p>
+            <ul>
+                <li><strong>Username:</strong> owner</li>
+                <li><strong>Password:</strong> p@ssword123</li>
+            </ul>
+
+            <input type="text" placeholder="Username" data-bind="value: loginUsername" />
+            <input type="password" placeholder="Password" data-bind="value: loginPassword" />
+            <div type="button" data-role="button" data-bind="click: login">Log In</div>
+            <a href="#register-view" data-role="button">Register</a>
+        </div>
         
-        
-<!-- SBP ----------------------------------------------------------------------------- SBP -->
-        
+        <div data-role="view" id="register-view" data-layout="base-layout" data-title="Create Account" style="display: none;" data-model="app.accountView.viewModel">
+            <input type="text" placeholder="Username" data-bind="value: registerUsername" />
+            <input type="password" placeholder="Password" data-bind="value: registerPassword" />
+            <input type="password" placeholder="Confirm Password" data-bind="value: registerPasswordRetyped" />
+            <input type="button" data-role="button" value="Register" data-bind="click: register" />
+        </div>
+
+        <div data-role="layout" data-id="account-layout" data-show="app.accountView.layoutShow">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title"></span>
+                    <span data-role="button" data-bind="click: logout" data-align="right">Log Off</span>
+                </div>
+                <h2><span data-bind="text: userName" class="user-name"></span>'s Order History</h2>
+            </header>
+            <div data-role="footer">
+                <div data-role="tabstrip">
+                    <a href="#genres-view" data-icon="home">Home</a>
+                    <a href="#search-view" data-icon="search">Search</a>
+                    <a href="#cart-view" data-icon="cart">Cart<span class="cart-badge km-badge" style="display: none;"></span></a>
+                    <a href="#account-view" data-icon="contacts">Account</a>
+                    <a href="#about-view" data-icon="about">About</a>
+                </div>
+            </div>
+
+            <div data-role="popover" id="popover-account-overflow" data-popup='{"height": 55, "width": 125}'>
+                <div data-role="view" data-title="People">
+                    <ul data-role="listview" data-click="app.accountView.action">
+                        <li data-action="logout">Log Off</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div data-role="layout" data-id="account-layout" data-show="app.accountView.layoutShow" data-platform="android">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a class="nav-button" data-align="left" data-role="backbutton"></a>
+                    <span data-role="view-title"></span>
+                    <div data-align="right" class="action-buttons">
+                        <a data-role="button" href="#popover-account-overflow" data-rel="popover" data-icon="action-overflow"></a>
+                    </div>
+                </div>
+                <h2><span data-bind="text: userName" class="user-name"></span>'s Order History</h2>
+            </header>
+        </div>
+
 
         <!-- About Views -->
 
@@ -541,14 +323,10 @@
             </ul>
         </div>
 
-        
-        <!-- Layouts  (IOS & Android) ------------------------  -->
-        
-        <!--  IOS Layout  -->
         <div data-role="layout" data-id="about-layout" data-show="app.baseLayout.show">
             <div data-role="footer">
                 <div data-role="tabstrip">
-                    <a href="#genres-view" data-icon="home">Store</a>
+                    <a href="#genres-view" data-icon="home">Home</a>
                     <a href="#search-view" data-icon="search">Search</a>
                     <a href="#cart-view" data-icon="cart">Cart<span class="cart-badge km-badge" style="display: none;"></span></a>
                     <a href="#account-view" data-icon="contacts">Account</a>
@@ -557,7 +335,6 @@
             </div>
         </div>
 
-        <!--  Android Layout  -->
         <div data-role="layout" data-id="about-layout" data-platform="android" data-show="app.baseLayout.show">
             <header data-role="header">
                 <div data-role="navbar">
@@ -570,10 +347,7 @@
             </header>
         </div>
 
-  
-<!-- SBP ----------------------------------------------------------------------------- SBP -->      
-        
-         
+
         <!-- Error Views -->
 
         <div data-role="modalview" id="error-view" style="display: none; width: 95%; height: 90%;">
@@ -587,19 +361,13 @@
             <div class="message"></div>
         </div>
 
-        
 
-        <!-- SBP ----------------------------------------------------------------------------- SBP -->      
-        
- 
         <!-- Shared Layouts -->
-        
-        <!--  base-layout  -->
 
         <div data-role="layout" data-id="base-layout" data-show="app.baseLayout.show">
             <div data-role="footer">
                 <div data-role="tabstrip">
-                    <a href="#genres-view" data-icon="home">Store</a>
+                    <a href="#genres-view" data-icon="home">Home</a>
                     <a href="#search-view" data-icon="search">Search</a>
                     <a href="#cart-view" data-icon="cart">Cart<span class="cart-badge km-badge" style="display: none;"></span></a>
                     <a href="#account-view" data-icon="contacts">Account</a>
@@ -616,29 +384,7 @@
                 </div>
             </header>
         </div>
-        
-        
-        <!--  blank-screen-layout  -->
 
-        <div data-role="layout" data-id="blank-screen-layout" data-show="app.baseLayout.show">
-            <div data-role="footer">
-
-            </div>
-        </div>
-
-        <div data-role="layout" data-id="base-layout" data-show="app.baseLayout.show" data-platform="android">
-            <header data-role="header">
-                <div data-role="navbar">
-                    <a class="nav-button" data-align="left" data-role="backbutton"></a>
-                    <span data-role="view-title"></span>
-                </div>
-            </header>
-        </div>
-        
-        
-        <!-- SBP ----------------------------------------------------------------------------- SBP -->      
-        
- 
 
         <!-- Templates -->
 
@@ -688,12 +434,7 @@
             <div>#=Quantity# at #=kendo.toString(UnitPrice, "c")# each</div>
         </script>
 
-        
 
-        <!-- SBP ----------------------------------------------------------------------------- SBP -->      
-        
- 
-        
         <!-- Scripts -->
 
         <script data-main="scripts/main.js" src="scripts/require.js"></script>

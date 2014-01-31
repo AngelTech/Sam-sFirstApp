@@ -1,24 +1,36 @@
-(function (global) {
-    var mobileSkin = "",
-        app = global.app = global.app || {};
+define(["jQuery", "kendo", "kendoIndexedListView", "data", "config", "utils", "cart", "home-layout", "base-layout", "artists-view", "genres-view", "albums-view", "search-view", "cart-view", "checkout-view", "account-view", "about-view"],
+       function($, kendo,  x,                       data,   config,   utils,   cart,   homeLayout,    baseLayout,    artistsView,    genresView,    albumsView,    searchView,    cartView,    checkoutView,    accountView, aboutView) {
 
-    document.addEventListener('deviceready', function () {
-        navigator.splashscreen.hide();
-        $(document.body).height(window.innerHeight);
-    }, false);
-
-    app.application = new kendo.mobile.Application(document.body, { layout: "tabstrip-layout"});
-
-    app.changeSkin = function (e) {
-        if (e.sender.element.text() === "Flat") {
-            e.sender.element.text("Native");
-            mobileSkin = "flat";
-        }
-        else {
-            e.sender.element.text("Flat");
-            mobileSkin = "";
-        }
-
-        app.application.skin(mobileSkin);
+    var _onError = function (error, url, line) {
+        utils.showError(error);
     };
-})(window);
+
+    var init = function () {
+        window.onerror = _onError;
+
+        var kendoApp = new kendo.mobile.Application(document.body, {
+            transition: "fade",
+//            initial: "about-view",     SBP replaced this line with 'main-view' line just below.
+            initial: "mainMenu-view",
+            loading: '<h1 class="loading-message">Loading...</h1>'
+        });
+        utils.init(kendoApp);
+        cart.items.bind("change", function () { utils.updateCartBadges($, cart); });
+    };
+
+    return {
+        closeErrorModal: utils.closeError,
+        config: config,
+        init: init,
+        homeLayout: homeLayout,
+        baseLayout: baseLayout,
+        albumsView: albumsView,
+        artistsView: artistsView,
+        genresView: genresView,
+        searchView: searchView,
+        cartView: cartView,
+        checkoutView: checkoutView,
+        accountView: accountView,
+        aboutView: aboutView
+    };
+});
