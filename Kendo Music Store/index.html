@@ -3,15 +3,19 @@
     <head>
         <title></title>
         <meta charset="utf-8" />
-        <script src="cordova.js"></script>
+        
+        <!--  NOTE: These are commented out because they are in main.js  -->
+        <!-- <script src="cordova.js"></script> -->  -->
+        <!-- <script src="kendo/js/kendo.all.min.js"></script>  -->
+        <!-- <script src="kendo/js/jquery.min.js"></script>  -->
         <!-- <script src="Plugins/ChildBrowser/childbrowser.js"></script>  -->
+               
         
-
-        
--        <link href="kendo/styles/kendo.mobile.all.minF.css" rel="stylesheet" />
-        <!-- Replace with kendo/styles/kendo.mobile.all.min.css which is the unformatted one line version of above css file -->
-       
-        <link href="kendo/styles/kendo.indexedlistview.css" rel="stylesheet" />
+-      <link href="kendo/styles/kendo.mobile.all.minF.css" rel="stylesheet" />
+       <!-- Replace with kendo/styles/kendo.mobile.all.min.css which is the unformatted one line version of above css file -->
+         <link href="kendo/styles/kendo.common.min.css" rel="stylesheet" />   -->
+ 
+        <link href="kendo/styles/kendo.indexedlistview.css" rel="stylesheet" />  
         <link href="styles/main.css" rel="stylesheet" />
     </head>
     
@@ -187,17 +191,40 @@
         
         <!-- Store Views -->
 
-		<div data-role="view" id="genres-view" data-layout="home-layout" data-title="Store Manager" data-model="app.genresView.viewModel" data-show="app.genresView.onShow">
-<!--  New code - Original code error couldn't bind data..              <div data-role="view" id="genres-view" data-layout="home-layout" data-title="Store Manager" >    -->
-            <ul data-role="listview" data-bind="source: genres" data-template="genre-list-template", data-style="inset"></ul>
-            <div style="text-align: center;"><a>INSERT DATA TABLE HERE</a></div><br>
+        <div data-role="view" id="genres-view" data-layout="home-layout" data-title="Store Manager" data-model="app.genresView.viewModel" data-show="app.genresView.onShow" style="display: none;">
+             
+         <!--  New code - Original code above causes error couldn't bind data..         
+                <div data-role="view" id="genres-view" data-layout="home-layout" data-title="Store Manager" >     -->
+           
+            <div style="text-align: center;">
+                <a>DATA TABLE HERE</a>
+                
+            </div><br>
+            
+
+            <!--  KENDO GRID INSERTED HERE  -->
+
+
+            <div id="inventory">
+
+                
+            </div>
+
+         
+          
+        
             <footer>
                 <div><a href="#scan-view" data-role="button" style="background-color: green">Add Item</a>
                 <a href="#" data-role="button" style="background-color: green">Move Up</a><br></div>
                <div> <a href="#" data-role="button" style="background-color: green">Delete Item</a>
                 <a href="#" data-role="button" style="background-color: green">Move Down</a></div>
             </footer>
-        </div>
+            
+        </div>   
+
+            <!---  END KENDO GRID   ------------- -->
+            
+
         
     <!--
         <div data-role="view" id="artists-view" data-layout="home-layout" data-title="Store Manager" data-model="app.artistsView.viewModel" class="km-insetcontent" style="display: none;">
@@ -229,12 +256,12 @@
                     <a class="nav-button" data-align="left" data-role="backbutton">Back</a>
                     <span data-role="view-title"></span>
                 </div>
-            <!--
+
                 <ul class="select-group">
                     <li data-target="#genres-view">Liquor</li>
                     <li data-target="#artists-view">Brand</li>                   
                 </ul>
-            -->
+            
             </header>
 
             <div data-role="footer"> 
@@ -696,7 +723,8 @@
  
         
         <!-- Scripts -->
-
+  
         <script data-main="scripts/main.js" src="scripts/require.js"></script>
+        
     </body>
 </html>
